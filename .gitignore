@@ -92,3 +92,9 @@ marrow.toml
 # Harbor benchmark job output (generated per run, large)
 jobs/
 bench/harbor/
+
+# Development Files
+.serena/
+.smallcode/memory/
+.codex/
+documents/開発設計.md
