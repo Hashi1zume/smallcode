@@ -113,6 +113,9 @@ class MemoryStore {
     const scored = [];
 
     for (const obj of this.objects.values()) {
+      // Older evidence writes could leave title undefined. Ignore malformed
+      // entries so one persisted record cannot terminate the agent session.
+      if (typeof obj.title !== 'string') continue;
       let score = 0;
       const text = `${obj.title} ${obj.content} ${obj.tags.join(' ')}`.toLowerCase();
 

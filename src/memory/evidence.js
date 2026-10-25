@@ -166,16 +166,16 @@ function recordEvidence(memoryStore, trace, options = {}) {
   try {
     // budget-aware-mcp signature: remember({ type, title, content, tags, files, symbols })
     // Local fallback memory.js signature: remember(type, title, content, opts)
-    // We try the object form first; on TypeError fall back to positional.
+    // The local API accepts an object as `type` without throwing, so select
+    // its positional signature before writing (as in the tool executor).
     let result;
-    try {
-      result = memoryStore.remember(summary);
-    } catch (e) {
-      // Positional fallback
+    if (memoryStore.remember.length >= 3) {
       result = memoryStore.remember(summary.type, summary.title, summary.content, {
         tags: summary.tags,
         files: summary.files,
       });
+    } else {
+      result = memoryStore.remember(summary);
     }
     return result;
   } catch {
