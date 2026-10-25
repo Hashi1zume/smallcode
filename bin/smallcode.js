@@ -1792,7 +1792,7 @@ Read the FULL file above carefully. Fix ALL errors. Use the patch tool with the 
     // No tool calls — model is responding with text
     // Counter guard: if this is a coding/editing task and no tools were called,
     // the model may be prematurely answering instead of acting
-    if (toolCallsThisTurn === 0 && (currentTaskType === 'coding' || currentTaskType === 'editing' || currentTaskType === 'backend')) {
+    if (toolCallsThisTurn === 0 && currentToolCategory !== 'respond' && (currentTaskType === 'coding' || currentTaskType === 'editing' || currentTaskType === 'backend')) {
       if (message.content && !message.content.includes('?') && message.content.length < 200) {
         // Model gave a short non-question response without using tools — push it to act
         conversationHistory.push({ role: 'assistant', content: message.content });
