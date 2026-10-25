@@ -16,8 +16,8 @@ baseUrl = "http://localhost:11434/v1"
 # baseUrl = "http://localhost:11434/v1"
 #
 # [models.default]
-# name = "gpt-oss:20b"
-# baseUrl = "http://localhost:11434/v1"
+# name = "prism-ml/Ternary-Bonsai-2-9B-mlx-2bit"
+# baseUrl = "http://127.0.0.1:8000/v1"
 #
 # [models.strong]
 # name = "openai/gpt-4o-mini"
